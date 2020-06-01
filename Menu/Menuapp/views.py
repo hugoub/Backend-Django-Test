@@ -1,12 +1,16 @@
 from django.shortcuts import render, HttpResponse
-from Menuapp.models import Postre, Almuerzo, Ensalada
-from Menuapp.forms import Agregar
+from Menuapp.models import Postre, Almuerzo, Ensalada, Empleado, Menu
+from Menuapp.forms import Agregar, AgregarEmpleado
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
 def home(request):
+    if request.user.is_staff:
+        return render(request, 'home.html')
 
-    return render(request, 'home.html')
+    else:
+        return HttpResponse('No tiene permitido ver esta pagina')
 
 def ver(request):
 
@@ -148,3 +152,59 @@ def modificar(request):
 
         return render(request, 'finalizado.html', {'mensaje': 'Modificado Correctamente'})
     
+
+
+
+
+def agregar_empleados(request):
+
+    if request.method=='POST':
+        empleado_form = AgregarEmpleado(request.POST)
+
+        if empleado_form.is_valid():
+
+            empleado_info = empleado_form.cleaned_data
+
+            empleado_bd = Empleado(nombres=empleado_info['nombres'], apellidos =empleado_info['apellidos'], pais =empleado_info['pais'], whatsapp =empleado_info['whatsapp'])
+
+            empleado_bd.save()
+
+        else:
+
+            return HttpResponse('Error, no se encuentra tipo de dato')              
+
+        return render(request, 'finalizado.html', {'mensaje': 'Agregado Correctamente'})
+
+    else:
+
+        empleado_form = AgregarEmpleado()
+
+        return render(request,'agregar_empleado.html', {'form': empleado_form})
+
+
+
+def agregar_menu(request):
+    
+    if request.method=="POST":
+        
+        almuerzo_m = Almuerzo.objects.get(id__exact = request.POST['id_almuerzo'] )
+        ensalada_m = Ensalada.objects.get(id__exact = request.POST['id_ensalada'] )
+        postre_m = Postre.objects.get(id__exact = request.POST['id_postre'] )
+        
+        nuevo_menu = Menu(fecha_menu=request.POST['fecha'],id_almuerzo=almuerzo_m,id_ensalada=ensalada_m,id_postre=postre_m)
+
+        nuevo_menu.save()
+
+        return HttpResponse('Agregado')
+
+    else:
+
+        postres_list = list(Postre.objects.all())
+        almuerzos_list = list(Almuerzo.objects.all())
+        ensaladas_list = list(Ensalada.objects.all())
+
+        return render(request, 'agregar_menu.html',{'postres_l':postres_list, 'almuerzos_l': almuerzos_list, 'ensaladas_l': ensaladas_list})
+
+def elegir_menu(request):
+
+    return HttpResponse('Prueba')

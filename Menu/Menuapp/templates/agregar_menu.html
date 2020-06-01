@@ -1,0 +1,43 @@
+<http>
+
+
+<body>
+
+<h3>Agregar opcion de menu</h3>
+
+<form action='' method="POST">{% csrf_token %}
+
+<input type="date" id="start" name="fecha" value="2018-07-22">
+
+<p>
+<select name='id_almuerzo'> 
+    {% for articulo in almuerzos_l %}
+        <option value={{articulo.id}}>{{articulo.id}} &nbsp; {{articulo.nombre}} </option> 
+    {% endfor %}
+</select> 
+</p>
+
+<p>
+<select name='id_ensalada'> 
+    {% for articulo in ensaladas_l %}
+        <option value={{articulo.id}}>{{articulo.id}} &nbsp; {{articulo.nombre}} </option> 
+    {% endfor %}
+</select> 
+</p>
+
+<p>
+<select name='id_postre'> 
+    {% for articulo in postres_l %}
+        <option value={{articulo.id}}>{{articulo.id}} &nbsp; {{articulo.nombre}} </option> 
+    {% endfor %}
+</select> 
+</p>
+
+<input type="submit" value="Agregar">
+
+
+</form>
+
+</body>
+
+</http>
