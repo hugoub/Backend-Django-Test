@@ -1,0 +1,52 @@
+<html>
+
+<body>
+
+<h3>Ver todos</h3>
+
+<form action='ver/' method='POST'>{% csrf_token %}
+    <select name='valor'> 
+        <option value=almuerzos> Almuerzo </option> 
+        <option value=postres> Postre </option> 
+        <option value=ensaladas> Ensalada </option> 
+    </select> 
+    <input type='submit' value='Ver'>
+</form>
+
+<h3>Agregar</h3>
+
+<form action='agregar/' method='POST'>{% csrf_token %}
+    <select name='valor'> 
+        <option value=almuerzos> Almuerzo </option> 
+        <option value=postres> Postre </option> 
+        <option value=ensaladas> Ensalada </option> 
+    </select> 
+    <input type='submit' value='Agregar nuevo'>
+</form>
+
+<h3>Eliminar</h3>
+
+<form action='eliminar/' method='POST'>{% csrf_token %}
+    <select name='valor'> 
+        <option value=almuerzos> Almuerzo </option> 
+        <option value=postres> Postre </option> 
+        <option value=ensaladas> Ensalada </option> 
+    </select> 
+    <input type='submit' value='Ver registro para eliminar'>
+</form>
+
+<h3>Modificar</h3>
+
+<form action='modificar/' method='POST'>{% csrf_token %}
+    <select name='valor'> 
+        <option value=almuerzos> Almuerzo </option> 
+        <option value=postres> Postre </option> 
+        <option value=ensaladas> Ensalada </option> 
+    </select> 
+    <input type='submit' value='Ver registro para modificar'>
+</form>
+
+
+</body>
+
+</html>

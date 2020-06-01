@@ -1,0 +1,18 @@
+<html>
+
+<body>
+<h1>Editar {{agregar_tipo}}</h1>
+
+<form action='' method="POST">{% csrf_token %}
+    <table>
+        {{form.as_table}}
+    </table>
+    <input type="hidden" name="id_articulo_modificar" value={{id_articulo}} />
+    <input type='hidden' name='tipo' value={{agregar_tipo}} />
+    
+    <input type="submit" value="Enviar">
+</form>
+
+</body>
+
+</html>

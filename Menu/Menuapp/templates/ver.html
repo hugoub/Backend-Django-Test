@@ -1,0 +1,24 @@
+<html>
+
+<body>
+
+    <p> Estas viendo la tabla <strong>{{valor}}</strong></p>
+
+    {% if articulos %}
+        <p>Cantidad encontrada: {{articulos|length}} </p>
+
+        <ul>
+            {% for articulo in articulos %}
+                <li> {{articulo.id}} &nbsp; {{articulo.nombre}} &nbsp; {{articulo.descripcion}}  </li>
+            {% endfor %}
+
+        </ul>
+        {% else %}
+
+        <p> No esta el articulo encontrado</p>
+
+    {% endif  %}
+
+</body>
+
+</html>

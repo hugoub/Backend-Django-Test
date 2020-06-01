@@ -1,0 +1,20 @@
+<html>
+
+<body>
+
+    <h2><p> Estas buscando <strong>{{agregar_tipo}}</strong> para eliminar</p></h2>
+
+        <form action='' method="POST">{% csrf_token %}
+        <p>Su navegador preferido: 
+        <select name='id_articulo'> 
+            {% for articulo in articulos %}
+                <option value={{articulo.id}}>{{articulo.id}} &nbsp; {{articulo.nombre}} </option> 
+            {% endfor %}
+        </select> 
+        <input type='hidden' name='tipo' value={{agregar_tipo}} />
+        <input type="submit" value="Eliminar">
+        </form>
+
+</body>
+
+</html>

@@ -1,0 +1,25 @@
+<html>
+
+<body>
+<h3>Agregar {{agregar_tipo}}</h3>
+
+{% if form.errors %}
+
+<p style='color: red;''>Revisar forma</p>
+
+{% endif %}
+
+<form action='' method='POST'>{% csrf_token %}
+
+    <table>
+        {{form.as_table}}
+    </table>
+    
+    <input type='hidden' name='tipo' value={{agregar_tipo}} />
+    <input type='submit' value='Enviar'>
+
+</form>
+
+</body>
+
+</html>
