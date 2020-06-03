@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'Menuapp',
     'users',
-    'slack_test',
+    'slack_comunicar',
     'slack_app',
     'celery_test',
 ]

@@ -30,7 +30,7 @@ class Menu(models.Model):
     id_postre = models.ForeignKey(Postre, on_delete=models.CASCADE, blank=True, null=True)
 
 class Elegir_menu(models.Model):
-    id_menu = models.ForeignKey(Menu, on_delete=models.CASCADE)
+    id_menu = models.ForeignKey(Menu, on_delete=models.CASCADE,blank=True,null=True)
     id_empleado = models.ForeignKey(Empleado, on_delete=models.CASCADE)
     cambios = models.TextField(blank=True,null=True)
     uuid = models.UUIDField()
