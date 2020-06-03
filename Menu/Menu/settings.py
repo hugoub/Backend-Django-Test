@@ -43,7 +43,6 @@ INSTALLED_APPS = [
     'users',
     'slack_comunicar',
     'slack_app',
-    'celery_test',
 ]
 
 MIDDLEWARE = [

@@ -17,7 +17,6 @@ from django.contrib import admin
 from django.urls import path, include
 from users import views as users_views
 from slack_comunicar import views as slack_views
-from celery_test import views as celery_views
 
 
 urlpatterns = [
@@ -28,7 +27,6 @@ urlpatterns = [
     path('logout/', users_views.logout),
     path('listar_users/', users_views.listar_user),
     path('comunicar/',slack_views.comunicador),
-    path('asincro',celery_views.celery_test)
 ]
 
 

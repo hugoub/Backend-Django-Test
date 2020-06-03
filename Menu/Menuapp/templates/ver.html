@@ -6,11 +6,20 @@
 
     {% if articulos %}
         <p>Cantidad encontrada: {{articulos|length}} </p>
-        <ul>
+        <table border="2">
+            <tr>
+                <th>id </th>
+                <th>Nombre </th>
+                <th>Descripcion   </th>
+            </tr>
             {% for articulo in articulos %}
-                <li> {{articulo.id}} &nbsp; {{articulo.nombre}} &nbsp; {{articulo.descripcion}}  </li>
+            <tr>
+                <td> {{articulo.id}} </td
+                ><td> {{articulo.nombre}} </td>
+                <td>  {{articulo.descripcion}} </td>
+            </tr>
             {% endfor %}
-        </ul>
+        </table>
         {% else %}
         <p> No se han encontrado platos </p>
     {% endif  %}
