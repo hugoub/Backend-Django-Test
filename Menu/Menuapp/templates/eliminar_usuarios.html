@@ -1,0 +1,46 @@
+<html>
+
+<body>
+
+    <p>Elegir Usuario a Eliminar</p>
+
+    {% if empleados %}
+        <p>Cantidad encontrada: {{empleados|length}} </p>
+        <table border="2">
+            <tr>
+                <th>Id </th>
+                <th>Usuario    </th>
+                <th>id de Slack    </th>
+            </tr>
+            {% for empleado in empleados %}
+                {% if not empleado.is_superuser %}
+                    <tr>
+                        <td>{{empleado.id}}                 </td> 
+                        <td>{{empleado.username}} </td>
+                        <td>{{empleado.id_slack}} </td>
+                    </tr>
+                {% endif %}
+            {% endfor %}
+        </table>
+        {% else %}
+        <p> No se han encontrados menus </p>
+    {% endif  %}
+    
+    <p> ¿Que empleado desea eliminar? </p>
+    
+    <form action='/eliminar_usuarios/' method="POST">{% csrf_token %}
+        <p>Empleado a seleccionar: 
+        <select name='id_empleado'> 
+            {% for empleado in empleados %}
+                <option value={{empleado.id}}>{{empleado.id}} </option> 
+            {% endfor %}
+        </select> 
+        <input type="submit" value="Eliminar empleado">
+    </form>
+
+    <form action='/' method='GET'>
+        <input type='submit' value='Volver a Menu de Gestión'>
+    </form>
+
+</body>
+</html>

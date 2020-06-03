@@ -13,4 +13,8 @@ urlpatterns = [
     path('mostrar_menu/',views.mostrar_menu),
     path('menu/<uuid:empleado_uuid>/',slack_views.comunicador),
     path('generar_links/',slack_views.generador_de_links),
+    path('ver_menu_empleado/',views.ver_menu_empleado),
+    path('eliminar_menu/',views.eliminar_menu),
+    path('eliminar_usuarios/',views.eliminar_usuarios),
+    path('home_usuario/',views.home_usuario),
 ]

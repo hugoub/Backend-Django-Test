@@ -2,14 +2,12 @@
 
 <body>
 
-    <p><h2> Hola {{user}}. Estas viendo el Menú para el día {{fecha}}</h2></p>
-    <p>Tienes hasta las 11 del día para mandar tu menú</p>
+    <p>Elegir Menú a Eliminar</p>
 
     {% if menus %}
         <p>Cantidad encontrada: {{menus|length}} </p>
         <table border="2">
             <tr>
-                <th>Menú </th>
                 <th>Id del Menú </th>
                 <th>Almuerzo    </th>
                 <th>Ensalada    </th>
@@ -17,7 +15,6 @@
             </tr>
             {% for menu in menus %}
             <tr>
-                <td>{{forloop.counter}}         </td>
                 <td>{{menu.id}}                 </td> 
                 <td>{{menu.id_almuerzo.nombre}} </td>
                 <td>{{menu.id_ensalada.nombre}} </td>
@@ -31,15 +28,14 @@
     
     <p> ¿Que menú desea seleccionar? </p>
     
-    <form action='/menu/{{uuid}}/' method="POST">{% csrf_token %}
+    <form action='/eliminar_menu/' method="POST">{% csrf_token %}
         <p>Menú a seleccionar: 
         <select name='id_menu'> 
             {% for menu in menus %}
-                <option value={{menu.id}}>{{forloop.counter}} </option> 
+                <option value={{menu.id}}>{{menu.id}} </option> 
             {% endfor %}
         </select> 
-        <p>Notas: <input type="text" name='texto'></p>
-        <input type="submit" value="Seleccionar menú">
+        <input type="submit" value="Eliminar menú">
     </form>
 
     <form action='/' method='GET'>

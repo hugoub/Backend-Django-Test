@@ -1,0 +1,32 @@
+<html>
+<body>
+    <h1> Menus solicitados para el día de hoy </h1>
+
+    <table border="2">
+        <tr>
+            <th>Menú </th>
+            <th>username </th>
+            <th>Id del Menú </th>
+            <th>Almuerzo    </th>
+            <th>Ensalada    </th>
+            <th>Postre  </th>
+        </tr>
+
+        {% for menu in menus_elegidos %}
+        <tr>
+            <td>{{forloop.counter}}              </td>
+            <td>{{menu.id_empleado.username}}       </td>
+            <td>{{menu.id_menu.id}}                 </td> 
+            <td>{{menu.id_menu.id_almuerzo.nombre}} </td>
+            <td>{{menu.id_menu.id_ensalada.nombre}} </td>
+            <td>{{menu.id_menu.id_postre.nombre}}   </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <form action='/' method='GET'>
+        <input type='submit' value='Volver a Menu de Gestión'>
+    </form>
+
+</body>
+</html>

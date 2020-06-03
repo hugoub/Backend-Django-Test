@@ -1,0 +1,34 @@
+<html>
+
+<body>
+
+<h1> Bienvenido {{user}} </h1>
+<h1> Tu menu seleccionado para hoy es: </h1>
+
+<table border="2">
+    <tr>
+        <th>Menú </th>
+        <th>Id del Menú </th>
+        <th>Almuerzo    </th>
+        <th>Ensalada    </th>
+        <th>Postre  </th>
+    </tr>
+
+    {% for menu in menus_elegidos %}
+    <tr>
+        <td>{{forloop.counter}}              </td>
+        <td>{{menu.id_menu.id}}                 </td> 
+        <td>{{menu.id_menu.id_almuerzo.nombre}} </td>
+        <td>{{menu.id_menu.id_ensalada.nombre}} </td>
+        <td>{{menu.id_menu.id_postre.nombre}}   </td>
+    </tr>
+    {% endfor %}
+</table>
+
+<p>
+<a href="/logout">Cerrar sesión</a>
+</p>
+
+</body>
+
+</html>
