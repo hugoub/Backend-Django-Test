@@ -1,0 +1,37 @@
+<html>
+
+<body>
+
+    <p><h2> Estas viendo la tabla de Menú para el día {{fecha}}</h2></p>
+
+    {% if menus %}
+        <p>Cantidad encontrada: {{menus|length}} </p>
+        <table border="2">
+            <tr>
+                <th>Menú </th>
+                <th>Id del Menú </th>
+                <th>Almuerzo    </th>
+                <th>Ensalada    </th>
+                <th>Postre  </th>
+            </tr>
+            {% for menu in menus %}
+            <tr>
+                <td>{{forloop.counter}}         </td>
+                <td>{{menu.id}}                 </td> 
+                <td>{{menu.id_almuerzo.nombre}} </td>
+                <td>{{menu.id_ensalada.nombre}} </td>
+                <td>{{menu.id_postre.nombre}}   </td>
+            </tr>
+            {% endfor %}
+        </table>
+        {% else %}
+        <p> No se han encontrados menus </p>
+    {% endif  %}
+
+    <form action='/' method='GET'>
+        <input type='submit' value='Volver a Menu de Gestión'>
+    </form>
+
+</body>
+
+</html>

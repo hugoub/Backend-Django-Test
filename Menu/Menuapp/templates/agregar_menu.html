@@ -6,10 +6,11 @@
 <h3>Agregar opcion de menu</h3>
 
 <form action='' method="POST">{% csrf_token %}
-
-<input type="date" id="start" name="fecha" value="2018-07-22">
+Fecha del menu: 
+<input type="date" id="start" name="fecha">
 
 <p>
+Almuerzo:
 <select name='id_almuerzo'> 
     {% for articulo in almuerzos_l %}
         <option value={{articulo.id}}>{{articulo.id}} &nbsp; {{articulo.nombre}} </option> 
@@ -18,7 +19,9 @@
 </p>
 
 <p>
+Ensalada:
 <select name='id_ensalada'> 
+    <option value='sin'> Sin ensalada </option> 
     {% for articulo in ensaladas_l %}
         <option value={{articulo.id}}>{{articulo.id}} &nbsp; {{articulo.nombre}} </option> 
     {% endfor %}
@@ -26,7 +29,9 @@
 </p>
 
 <p>
+Postre:
 <select name='id_postre'> 
+    <option value='sin'> Sin postre </option> 
     {% for articulo in postres_l %}
         <option value={{articulo.id}}>{{articulo.id}} &nbsp; {{articulo.nombre}} </option> 
     {% endfor %}
@@ -34,7 +39,6 @@
 </p>
 
 <input type="submit" value="Agregar">
-
 
 </form>
 

@@ -1,0 +1,35 @@
+<html>
+
+<body>
+
+    <p> Estas viendo la tabla Empleados</strong></p>
+
+    {% if empleados %}
+        <p>Cantidad encontrada: {{empleados|length}} </p>
+        <table border=1>
+        <tr>
+            <th>Id de Empleado</th>
+            <th>Nombre de Usuario </th>
+            <th>Pais</th>
+            <th>Id de Slack</th>
+        </tr>
+        {% for em in empleados %}
+        <tr>
+            <td> {{em.id}} </td>
+            <td> {{em.username}} </td>
+            <td> {{em.pais}} </td>
+            <td> {{em.id_slack}} </td>
+        </tr>
+        {% endfor %}
+    </table>
+        {% else %}
+        <p> No se han encontrado platos </p>
+    {% endif  %}
+
+    <form action='/'>
+        <input type='submit' value='Volver a Menu de Gestión'>
+    </form>
+
+</body>
+
+</html>

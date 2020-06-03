@@ -1,55 +1,75 @@
 <html>
+<head></head>
 
 <body>
 
-<h3>Ver todos</h3>
+    <h1> Bienvenido al Menú de Gestión de la Plataforma </h2>
 
-<form action='ver/' method='POST'>{% csrf_token %}
-    <select name='valor'> 
-        <option value=almuerzos> Almuerzo </option> 
-        <option value=postres> Postre </option> 
-        <option value=ensaladas> Ensalada </option> 
-    </select> 
-    <input type='submit' value='Ver'>
-</form>
+    <h2> Sección de Menú y Platos </h2>
+    
+    <h3>Seleccionar que plato desea ver </h3>
+        <p>
+        <form action='/ver/' method='POST'>{% csrf_token %}
+            <select name='valor'> 
+                <option value=almuerzos> Almuerzo </option> 
+                <option value=postres> Postre </option> 
+                <option value=ensaladas> Ensalada </option> 
+            </select> 
+            <input type='submit' value='Ver'>
+        </form>
+    </p>
 
-<h3>Agregar</h3>
+    <h3>Agregar platos </h3>
+    <form action='/agregar/' method='POST'>{% csrf_token %}
+        <select name='valor'> 
+            <option value=almuerzos> Almuerzo </option> 
+            <option value=postres> Postre </option> 
+            <option value=ensaladas> Ensalada </option> 
+        </select> 
+        <input type='submit' value='Agregar nuevo'>
+    </form>
 
-<form action='agregar/' method='POST'>{% csrf_token %}
-    <select name='valor'> 
-        <option value=almuerzos> Almuerzo </option> 
-        <option value=postres> Postre </option> 
-        <option value=ensaladas> Ensalada </option> 
-    </select> 
-    <input type='submit' value='Agregar nuevo'>
-</form>
+    <h3>Modificar platos </h3>
+    <form action='/modificar/' method='POST'>{% csrf_token %}
+        <select name='valor'> 
+            <option value=almuerzos> Almuerzo </option> 
+            <option value=postres> Postre </option> 
+            <option value=ensaladas> Ensalada </option> 
+        </select> 
+        <input type='submit' value='Ver registro para modificar'>
+    </form>
 
-<h3>Eliminar</h3>
+    <h3>Eliminar platos </h3>
+    <form action='/eliminar/' method='POST'>{% csrf_token %}
+        <select name='valor'> 
+            <option value=almuerzos> Almuerzo </option> 
+            <option value=postres> Postre </option> 
+            <option value=ensaladas> Ensalada </option> 
+        </select> 
+        <input type='submit' value='Ver registro para eliminar'>
+    </form>
 
-<form action='eliminar/' method='POST'>{% csrf_token %}
-    <select name='valor'> 
-        <option value=almuerzos> Almuerzo </option> 
-        <option value=postres> Postre </option> 
-        <option value=ensaladas> Ensalada </option> 
-    </select> 
-    <input type='submit' value='Ver registro para eliminar'>
-</form>
-
-<h3>Modificar</h3>
-
-<form action='modificar/' method='POST'>{% csrf_token %}
-    <select name='valor'> 
-        <option value=almuerzos> Almuerzo </option> 
-        <option value=postres> Postre </option> 
-        <option value=ensaladas> Ensalada </option> 
-    </select> 
-    <input type='submit' value='Ver registro para modificar'>
-</form>
+    <h2> Seccion de Empleados </h2>
+    <form action='/register/'>
+        <input type='submit' value='Registrar un empleado'>
+    </form>
+    <form action='/listar_users/'>
+        <input type='submit' value='Ver empleados'>
+    </form>
 
 
+    <h2> Seccion de Menú </h2>
+    <form action='/agregar_menu/'>
+        <input type='submit' value='Agregar una opción de menú para un día específico'>
+    </form>
+    <form action='/mostrar_menu/'>
+        <input type='submit' value='Ver opciones de menú para un día específico'>
+    </form>
 
 
 
 </body>
+
+<a href="/logout">Cerrar sesión</a>
 
 </html>

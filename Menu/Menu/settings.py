@@ -25,8 +25,10 @@ SECRET_KEY = 'q)x-p5a3#s@rf8y*%1b9cbcb&knx7@vrmkxz#_pd@@&_l9(vto'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost','815f45154327.ngrok.io']
 
+CELERY_BROKER_URL = 'redis://localhost:6379/0'
+CELERY_RESULT_BACKEND = 'redis'
 
 # Application definition
 
@@ -38,8 +40,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'Menuapp',
-    'Usuarios',
     'users',
+    'slack_test',
+    'slack_app',
+    'celery_test',
 ]
 
 MIDDLEWARE = [
@@ -112,11 +116,11 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
-
 USE_I18N = True
 
 USE_L10N = True
+
+TIME_ZONE = 'Chile/Continental'
 
 USE_TZ = True
 
@@ -130,3 +134,17 @@ STATIC_URL = '/static/'
 LOGIN_REDIRECT_URL = '/'
 
 AUTH_USER_MODEL = 'Menuapp.Empleado'
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'slack_app.auth_backends.SlackAuthenticationBackend',
+]
+
+SLACK_CLIENT_ID="1148589986805.1182240666784"
+SLACK_CLIENT_SECRET="65dbf6b0c1d60d455575598c1de4edbe"
+SLACK_SIGNING_SECRET="e434d1382f5febc5fb0693f27ffdc7a9"
+
+SLACK_LOGIN_OAUTH_REDIRECT_URL="/slack/oauthcallback/"
+SLACK_INSTALL_OAUTH_REDIRECT_URL="/slack/login/"
+
+TOCKEN_SLACK = 'xoxb-1148589986805-1143681379287-weg6mv1mryz7yTLDHmrLPkEQ'

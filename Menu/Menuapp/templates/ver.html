@@ -6,18 +6,18 @@
 
     {% if articulos %}
         <p>Cantidad encontrada: {{articulos|length}} </p>
-
         <ul>
             {% for articulo in articulos %}
                 <li> {{articulo.id}} &nbsp; {{articulo.nombre}} &nbsp; {{articulo.descripcion}}  </li>
             {% endfor %}
-
         </ul>
         {% else %}
-
-        <p> No esta el articulo encontrado</p>
-
+        <p> No se han encontrado platos </p>
     {% endif  %}
+
+    <form action='/' method='GET'>
+        <input type='submit' value='Volver a Menu de Gestión'>
+    </form>
 
 </body>
 

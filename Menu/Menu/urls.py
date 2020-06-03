@@ -15,17 +15,22 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from users import views
+from users import views as users_views
+from slack_test import views as slack_views
+from celery_test import views as celery_views
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('Menuapp.urls')),
-    #path('accounts/', include('django.contrib.auth.urls')),
-    path('', views.welcome),
-    path('register', views.register),
-    path('login', views.login),
-    path('logout', views.logout),
+    path('register/', users_views.register),
+    path('login/', users_views.login),
+    path('logout/', users_views.logout),
+    path('listar_users/', users_views.listar_user),
+
+
+    path('comunicar/',slack_views.comunicador),
+    path('asincro',celery_views.celery_test)
 ]
 
 

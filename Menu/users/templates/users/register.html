@@ -1,15 +1,16 @@
 <html><body>
 
-    <h2>Registrar usuario</h2>
+    <h2>Registrar empleado</h2>
 
-    <form method="POST">
+    <form method="POST">{% csrf_token %}
         {{ form.as_p }}
-        {% csrf_token %}
         <button type="submit">Registrar</button>
     </form>
     
     <hr />
-    
-    <a href="/login">Iniciar sesión</a>
+
+    <form action='/'>
+        <input type='submit' value='Volver a Home'>
+    </form>
 
 </body></html>

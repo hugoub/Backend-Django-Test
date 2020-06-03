@@ -1,0 +1,15 @@
+<html>
+<body>
+
+Seleccionar fecha:
+
+    <form action='/mostrar_menu/' method="POST">{% csrf_token %}
+        Fecha del menu: 
+        <input type="date" id="start" name="fecha">
+
+        <input type="submit" value="Mostrar Menú">
+        
+    </form>
+
+</body>
+</html>

@@ -2,25 +2,29 @@
 
 <body>
 
+    <h3>Agregar {{agregar_tipo}}</h3>
 
-<h3>Agregar {{agregar_tipo}}</h3>
+    {% if form.errors %}
 
-{% if form.errors %}
+    <p style='color: red;''>Revisar forma</p>
 
-<p style='color: red;''>Revisar forma</p>
+    {% endif %}
 
-{% endif %}
+    <form action='' method='POST'>{% csrf_token %}
 
-<form action='' method='POST'>{% csrf_token %}
+        <table>
+            {{form.as_table}}
+        </table>
+        
+        <input type='hidden' name='tipo' value={{agregar_tipo}} />
+        
+        <input type='submit' value='Agregar'>
 
-    <table>
-        {{form.as_table}}
-    </table>
-    
-    <input type='hidden' name='tipo' value={{agregar_tipo}} />
-    <input type='submit' value='Enviar'>
+    </form>
 
-</form>
+    <p><form action='/' method='GET'>
+            <input type='submit' value='Volver a Menu de Gestión'>
+    </p></form>
 
 </body>
 
